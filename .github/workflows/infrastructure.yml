@@ -4,11 +4,10 @@ run-name: ${{ github.actor }} is running pre-commit
 on:
   push:
     branches:
-      - main
+      - 13.0
 jobs:
   terraform:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
-
