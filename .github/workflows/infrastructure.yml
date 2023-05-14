@@ -11,17 +11,3 @@ jobs:
     steps:
         - name: checkout
           uses: actions/checkout@v2
-
-        - name: 'install pre-reqs'
-          run: |
-            curl -SL "https://releases.hashicorp.com/terraform/1.0.8/terraform_1.0.8_linux_amd64.zip" --output terraform.zip
-            unzip "terraform.zip"
-            mv terraform  /usr/local/bin
-            terraform --version
-            rm terraform.zip
-
-        - name: 'Install TFLint'
-          run: |
-            wget https://github.com/terraform-linters/tflint/releases/download/v0.25.0/tflint_linux_amd64.zip
-            unzip tfline_linux_amd64
-            mv tflint /usr/local/bin
