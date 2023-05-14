@@ -8,20 +8,26 @@ on:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+
+    defaults:
+        run:
+            shell: bash
+            working-directory: terraform
+
     steps:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: 'install pre-reqs'
-        run: |
-            curl -SL "https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linux_amd64.zip" --output terraform.zip
-            unzip terraform.zip
-            mv terraform /usr/local/bin
-            terraform --version
-            rm terraform.zip
+      - name: Terraform Format
+        uses: hashicorp/terraform-github-action@master
+        with:
+            tf_action_version: 0.14.8
+            tf_action__subcommmand: 'fmt'
+            tf_actions_working_dir: ./terraform
 
-      - name: 'Istall TFLint'
-        run: |
-            wget https://github.com/terraform-linters/tflint/releases/download/v0.46.1/tflint_linux_amd64.zip
-            unzip tflint_linux_amd64
-            mv tflint /usr/local/bin
+      - name: Terraform Format
+        uses: hashicorp/terraform-github-action@master
+        with:
+            tf_action_version: 0.14.8
+            tf_action__subcommmand: 'init'
+            tf_actions_working_dir: ./terraform
