@@ -19,3 +19,10 @@ jobs:
             mv terraform /usr/local/bin
             terraform --version
             rm terraform.zip
+
+      - name: 'Istall TFLint'
+        run: |
+            wget https://github.com/terraform-linters/tflint/releases/download/v0.25.0/tflint_linux_amd.64.zip
+            unzip tflint_linux_amd64
+            mv tflint /usr/local/bin
+            
