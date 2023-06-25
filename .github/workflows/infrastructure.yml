@@ -1,5 +1,5 @@
 name: Terraform
-run-name: ${{ github.actor }} is running pre-commit
+run-name: ${{ github.actor }} is running terraform
 
 on:
   push:
